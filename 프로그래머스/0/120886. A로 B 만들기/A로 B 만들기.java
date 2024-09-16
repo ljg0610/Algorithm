@@ -38,5 +38,5 @@ class Solution{
         Arrays.sort(b);
 
         return new String(a).equals(new String(b)) ? 1 : 0
-            }
+        }
 }
