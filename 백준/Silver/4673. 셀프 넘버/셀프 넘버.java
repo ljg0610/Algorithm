@@ -1,38 +1,32 @@
 import java.util.*;
 
-public class Main{
-    static final int finalNum = 10000;
+public class Main {
+    static final int FINAL_NUM = 10000;
+
     public static void main(String[] args) {
-        ArrayList<Integer> result = selfNumber(finalNum);
-        for(int i = 0; i < result.size(); i++){
-            System.out.println(result.get(i));
+        boolean[] isSelfNumber = new boolean[FINAL_NUM + 1];
+
+        for (int i = 1; i <= FINAL_NUM; i++) {
+            int n = i;
+            int selfNum = getSelfNumber(n);
+            if (selfNum <= FINAL_NUM) {
+                isSelfNumber[selfNum] = true;
+            }
+        }
+
+        for (int i = 1; i <= FINAL_NUM; i++) {
+            if (!isSelfNumber[i]) {
+                System.out.println(i);
+            }
         }
     }
 
-    static ArrayList<Integer> selfNumber(int num){
-        ArrayList<Integer> numList = new ArrayList<>();
-        ArrayList<Integer> selfNumList = new ArrayList<>();
-
-        int[] numArr;
-        
-        for(int i = 1; i <= num; i++){
-            int answer = i;
-            String[] numString = ("" + i).split("");
-            numArr = new int[numString.length];
-            for(int j = 0; j < numArr.length; j++){
-                answer += Integer.parseInt(numString[j]);
-            }
-            if(answer <= finalNum){
-                numList.add(answer);
-            }
+    static int getSelfNumber(int num) {
+        int sum = num;
+        while (num > 0) {
+            sum += num % 10; 
+            num /= 10; 
         }
-
-        for(int i = 1; i < num; i++){
-            if(!numList.contains(i)){
-                selfNumList.add(i);
-            }
-        }
-
-        return selfNumList;
+        return sum;
     }
 }
