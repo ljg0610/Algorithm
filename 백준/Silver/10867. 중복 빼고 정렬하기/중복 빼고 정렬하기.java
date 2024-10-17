@@ -4,21 +4,21 @@ public class Main {
     public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
-        List<Integer> list = new ArrayList<>();
-    
+        
+        HashSet<Integer> inpuSet = new HashSet<>();
+
         StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-        for (int i = 0; i < n; i++) {
-            int input = Integer.parseInt(st.nextToken());
-            if(!list.contains(input)){
-                list.add(input);
-            }
+
+        while (st.hasMoreTokens()) {
+            inpuSet.add(Integer.parseInt(st.nextToken()));
         }
 
-        Collections.sort(list);
+        TreeSet<Integer> resultSet = new TreeSet<>(inpuSet);
 
         StringBuilder sb = new StringBuilder();
-        for (Integer result : list) {
-            sb.append(result).append(" ");
+
+        for(Integer num : resultSet){
+            sb.append(num).append(" ");
         }
 
         System.out.print(sb.toString().trim());
