@@ -4,13 +4,11 @@ public class Main {
     public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
-        HashSet<Integer> setNum = new HashSet<>();
+        TreeSet<Integer> sTreeSet = new TreeSet<>();
 
         for (int i = 0; i < n; i++) {
-            setNum.add(Integer.parseInt(br.readLine()));
+            sTreeSet.add(Integer.parseInt(br.readLine()));
         }
-
-        TreeSet<Integer> sTreeSet = new TreeSet<>(setNum);
 
         StringBuilder sb = new StringBuilder();
         for(Integer result : sTreeSet){
