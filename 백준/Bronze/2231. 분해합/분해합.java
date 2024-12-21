@@ -7,27 +7,23 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
 
-        int cnt = 1;
-        while (cnt <= n) {
-            int sum = cnt;
-            int num = cnt;
+        int result = 0;
 
-            while (num / 10 != 0) {
-                sum += num % 10;
-                num /= 10;
+        for (int i = 1; i < n; i++) {
+            int sum = i;
+            int temp = i;
+
+            while(temp > 0) {
+                sum += temp % 10;
+                temp /= 10;
             }
-            sum += num;
-            
+
             if(sum == n) {
-                System.out.println(cnt);
-                return;
+                result = i;
+                break;
             }
-
-            cnt++;
         }
 
-        if(cnt > n) {
-            System.out.println(0);
-        }
+        System.out.println(result);
     }
 }
