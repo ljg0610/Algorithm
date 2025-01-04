@@ -9,22 +9,15 @@ public class Main {
         int first = Integer.parseInt(br.readLine());
         int second = Integer.parseInt(br.readLine());
 
-        String[] secondVal = String.valueOf(second).split("");
-        
-        int[] values = new int[3];
-        for (int i = secondVal.length - 1; i >= 0; i--) {
-            values[i] = first * Integer.parseInt(secondVal[i]);
-            System.out.println(values[i]); 
-        }
+        br.close();
 
-        int pos = 0;
-        final int nums = 10;
-        int sum = 0;
-  
-        for (int i = secondVal.length - 1; i >= 0; i--) {
-            sum += values[i] * Math.pow(nums, pos++);
-        }
+        StringBuilder sb = new StringBuilder();
 
-        System.out.println(sum);
+        sb.append(first * (second % 10)).append('\n');
+        sb.append(first * ((second % 100) / 10)).append('\n');
+        sb.append(first * (second / 100)).append('\n');
+        sb.append(first * second);
+
+        System.out.println(sb);
     }
 }
