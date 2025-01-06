@@ -25,14 +25,10 @@ public class Main {
                 result += n / 5;
                 return result;
             }
-
-            if(n < 2) {
-                return -1;
-            }
             n -= 2;
             result++;
         }
 
-        return result;
+        return n < 0 ? -1 : result;
     }
 }
