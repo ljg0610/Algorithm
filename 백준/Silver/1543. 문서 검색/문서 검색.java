@@ -9,20 +9,10 @@ public class Main {
         String input = br.readLine();
         String word = br.readLine();
 
-        int result = 0;
-        int i = 0;
+        int originLength = input.length();
+        input = input.replace(word, "");
 
-        int inputLength = input.length();
-        int wordLength = word.length();
-
-        while (i <= inputLength - wordLength) {
-            if (input.substring(i, i + wordLength).equals(word)) {
-                result++;
-                i += wordLength;
-            } else {
-                i++;
-            }
-        }
+        int result = (originLength - input.length()) / word.length();
 
         System.out.println(result);
     }
