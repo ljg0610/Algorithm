@@ -1,7 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.LinkedList;
+import java.util.ArrayDeque;
 import java.util.Queue;
 
 public class Main {
@@ -10,7 +10,7 @@ public class Main {
 
         int n = Integer.parseInt(br.readLine());
 
-        Queue<Integer> cardQueue = new LinkedList<>();
+        Queue<Integer> cardQueue = new ArrayDeque<>();
 
         StringBuilder sb = new StringBuilder();
 
@@ -18,16 +18,13 @@ public class Main {
             cardQueue.add(i);
         }
 
-        for (int i = 1; i < n; i++) {
+        while (!cardQueue.isEmpty()) {
             sb.append(cardQueue.poll()).append(" ");
-
-            int down = cardQueue.poll();
-
-            cardQueue.add(down);
+            if (!cardQueue.isEmpty()) {
+                cardQueue.add(cardQueue.poll());
+            }
         }
 
-        sb.append(cardQueue.poll());
-        
         System.out.println(sb.toString());
     }
 }
