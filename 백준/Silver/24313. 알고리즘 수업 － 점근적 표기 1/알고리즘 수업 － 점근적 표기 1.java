@@ -14,24 +14,19 @@ public class Main {
         int c = Integer.parseInt(br.readLine());
         int nZero = Integer.parseInt(br.readLine());
 
-        boolean result = bigO(aZero, aOne, c, nZero);
-        if(result == true) {
-            System.out.println(1);
-        } else {
-            System.out.println(0);
-        }
+        System.out.println(bigO(aZero, aOne, c, nZero));
     }
 
-    public static boolean bigO(int aZero, int aOne, int c, int nZero) {
+    public static int bigO(int aZero, int aOne, int c, int nZero) {
         while (nZero <= 100) {
             int first = (aZero * nZero) + aOne;
             int second = c * nZero;
             if(first > second) {
-                return false;
+                return 0;
             }
             nZero++;
         }
 
-        return true;
+        return 1;
     }
 }
