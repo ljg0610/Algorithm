@@ -21,9 +21,9 @@ public class Main {
         br.close();
         
         Collections.sort(nums, Collections.reverseOrder());
-
-        for (int i = 0; i < nums.size(); i++) {
-            bw.write(nums.get(i) + "\n");
+        
+        for (int num : nums) {
+            bw.write(num + "\n");
         }
 
         bw.flush();
