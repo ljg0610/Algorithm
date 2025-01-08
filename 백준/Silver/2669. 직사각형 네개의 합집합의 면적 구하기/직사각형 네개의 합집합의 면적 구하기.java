@@ -34,11 +34,8 @@ public class Main {
     }
 
     private static void calcRect(int xLeft, int yLeft, int xRight, int yRight) {
-        int row = xRight - xLeft;
-        int col = yRight - yLeft;
-
-        for (int i = xLeft; i < xLeft + row; i++) {
-            for (int j = yLeft; j < yLeft + col; j++) {
+        for (int i = xLeft; i < xRight; i++) {
+            for (int j = yLeft; j < yRight; j++) {
                 visited[i][j] = 1;
             }
         }
