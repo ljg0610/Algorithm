@@ -18,25 +18,24 @@ public class Main {
 
         for (int i = 0; i < n; i++) {
             String line = br.readLine();
-            if (line.contains(PUSH)) {
-                stack.push(Integer.parseInt(line.substring(5, line.length())));
+            if (line.startsWith(PUSH)) {
+                stack.push(Integer.parseInt(line.substring(PUSH.length() + 1)));
             } else if(line.equals(POP)) {
                 if (stack.isEmpty()) {
                     sb.append(-1).append('\n');
-                    continue;
+                } else {
+                    sb.append(stack.pop()).append('\n');
                 }
-                sb.append(stack.pop()).append('\n');
             } else if (line.equals(SIZE)) {
                 sb.append(stack.size()).append('\n');
             } else if (line.equals(EMPTY)) {
-                int result = stack.isEmpty() ? 1 : 0;
-                sb.append(result).append('\n');
+                sb.append(stack.isEmpty() ? 1 : 0).append('\n');
             } else if (line.equals(TOP)) {
                 if (stack.isEmpty()) {
                     sb.append(-1).append('\n');
-                    continue;
+                } else {
+                    sb.append(stack.peek()).append('\n');
                 }
-                sb.append(stack.peek()).append('\n');
             }
         }
 
