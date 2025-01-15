@@ -23,28 +23,13 @@ public class Main {
         StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < m; i++) {
-            int target = Integer.parseInt(st.nextToken());
-            sb.append(binarySearch(nArr, target) + "\n");
-        }
-
-        System.out.println(sb.toString());
-    }
-
-    private static int binarySearch(int[] arr, int target) {
-        int left = 0;
-        int right = arr.length - 1; 
-
-        while (left <= right) {
-            int mid = (left + right) / 2;
-            if (target == arr[mid]) {
-                return 1;
-            } else if (target < arr[mid]) {
-                right = mid - 1;
+            if (Arrays.binarySearch(nArr, Integer.parseInt(st.nextToken())) >= 0) {
+                sb.append(1).append("\n");
             } else {
-                left = mid + 1;
+                sb.append(0).append("\n");
             }
         }
 
-        return 0;
+        System.out.println(sb.toString());
     }
 }
