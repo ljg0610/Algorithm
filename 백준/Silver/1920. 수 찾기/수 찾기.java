@@ -24,9 +24,9 @@ public class Main {
 
         for (int i = 0; i < m; i++) {
             if (Arrays.binarySearch(nArr, Integer.parseInt(st.nextToken())) >= 0) {
-                sb.append(1).append("\n");
+                sb.append(1).append('\n');
             } else {
-                sb.append(0).append("\n");
+                sb.append(0).append('\n');
             }
         }
 
