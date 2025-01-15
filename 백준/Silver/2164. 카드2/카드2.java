@@ -15,11 +15,8 @@ public class Main {
         }
 
         while (card.size() > 1) {
-            card.remove();
-
-            int down = card.peek();
-            card.remove();
-            card.offer(down);
+            card.poll();
+            card.offer(card.poll());
         }
 
         System.out.println(card.peek());
