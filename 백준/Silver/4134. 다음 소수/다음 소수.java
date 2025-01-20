@@ -25,8 +25,8 @@ public class Main {
 
         while (true) {
             boolean flag = true;
-            
-            for (long i = 2; i <= Math.sqrt(n); i++) {
+
+            for (long i = 2; i * i <= n; i++) {
                 if (n % i == 0) {
                     flag = false;
                     break;            
