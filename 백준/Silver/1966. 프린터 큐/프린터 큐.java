@@ -2,20 +2,14 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayDeque;
+import java.util.Collections;
 import java.util.Deque;
+import java.util.LinkedList;
+import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class Main {
-    
-    static class Document {
-        int priority;
-        int index;
-
-        Document(int priority, int index) {
-            this.priority = priority;
-            this.index = index;
-        }
-    }
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -28,39 +22,38 @@ public class Main {
             int n = Integer.parseInt(st.nextToken());
             int m = Integer.parseInt(st.nextToken());
 
-            Deque<Document> queue = new ArrayDeque<>();
+            Queue<int[]> queue = new LinkedList<>();
+            PriorityQueue<Integer> priorityQueue = new PriorityQueue<>(Collections.reverseOrder());
+
             st = new StringTokenizer(br.readLine());
             for (int j = 0; j < n; j++) {
-                queue.offer(new Document(Integer.parseInt(st.nextToken()), j));
+                int priority = Integer.parseInt(st.nextToken());
+                queue.offer(new int[] {priority, j});
+                priorityQueue.offer(priority);
             }
 
-            sb.append(printer(n, m, queue)).append('\n');
+            sb.append(printer(m, queue, priorityQueue)).append('\n');
         }
 
         System.out.println(sb.toString());
     }
 
-    private static int printer(int n, int m, Deque<Document> queue) {
+    private static int printer(int m, Queue<int[]> queue, PriorityQueue<Integer> priorityQueue) {
         int cnt = 0;
 
         while (!queue.isEmpty()) {
-            Document current = queue.pollFirst();
-            boolean isPriority = false;
+            int[] current = queue.poll();
+            int currentPriority = current[0];
+            int currentIndex = current[1];
 
-            for (Document document : queue) {
-                if (document.priority > current.priority) {
-                    isPriority = true;
-                    break;
-                }
-            }
-
-            if (isPriority) {
-                queue.offerLast(current);
-            } else {
+            if (currentPriority == priorityQueue.peek()) {
                 cnt++;
-                if (current.index == m) {
+                priorityQueue.poll();
+                if (currentIndex == m) {
                     return cnt;
                 }
+            } else {
+                queue.offer(current);
             }
         }
 
