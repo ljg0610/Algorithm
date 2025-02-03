@@ -17,13 +17,11 @@ public class Main {
             String name = br.readLine();
             
             if (name.equals(ENTER)) {
-                sum += chatMap.size();
-                chatMap = new HashMap<>();
-                continue;
+                chatMap.clear();
             } else {
-                chatMap.put(name, chatMap.getOrDefault(name, 0) + 1);
-                if (i == n - 1) {
-                    sum += chatMap.size();
+                if (!chatMap.containsKey(name)) {
+                    sum++;
+                    chatMap.put(name, 1);
                 }
             }
         }
