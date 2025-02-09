@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-    static Queue<Integer> circle;
+    static Deque<Integer> circle;
     public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
@@ -10,7 +10,7 @@ public class Main {
         int n = Integer.parseInt(st.nextToken());
         int k = Integer.parseInt(st.nextToken());
 
-        circle = new LinkedList<>();
+        circle = new ArrayDeque<>();
         
         for (int i = 1; i <= n; i++) {
             circle.offer(i);
@@ -22,16 +22,13 @@ public class Main {
     private static void josephus(int k) {
         StringBuilder sb = new StringBuilder();
         sb.append("<");
-        while(!circle.isEmpty()) {
+        while(circle.size() != 1) {
             for (int i = 0; i < k - 1; i++) {
                 circle.offer(circle.poll());
             }
-            if (circle.size() != 1) {
-                sb.append(circle.poll()).append(", ");  
-            } else {
-                sb.append(circle.poll()).append(">");  
-            }
+            sb.append(circle.poll()).append(", ");
         }
+        sb.append(circle.poll()).append(">");
 
         System.out.println(sb.toString());
     }
