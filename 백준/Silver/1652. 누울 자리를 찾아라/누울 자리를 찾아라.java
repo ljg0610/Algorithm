@@ -1,12 +1,12 @@
 import java.io.*;
 public class Main {
+    static int n;
+    static int rCnt;
+    static int cCnt;
     public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int n = Integer.parseInt(br.readLine());
+        n = Integer.parseInt(br.readLine());
         char[][] room = new char[n][n];
-
-        int rCnt = 0;
-        int cCnt = 0;
 
         for (int i = 0; i < n; i++) {
             String line = br.readLine();
@@ -14,7 +14,17 @@ public class Main {
                 room[i][j] = line.charAt(j);
             }
         }
+        
+        searchRow(room);
+        searchCol(room);
 
+        StringBuilder sb = new StringBuilder();
+        sb.append(rCnt).append(' ').append(cCnt);
+
+        System.out.println(sb.toString());
+    }
+
+    private static void searchRow(char[][] room) {
         for (int i = 0; i < n; i++) {
             int rSeq = 0;
             for (int j = 0; j < n; j++) {
@@ -31,7 +41,9 @@ public class Main {
                 ++rCnt;
             }
         }
+    }
 
+    private static void searchCol(char[][] room) {
         for (int i = 0; i < n; i++) {
             int cSeq = 0;
             for (int j = 0; j < n; j++) {
@@ -48,10 +60,5 @@ public class Main {
                 ++cCnt;
             }
         }
-
-        StringBuilder sb = new StringBuilder();
-        sb.append(rCnt).append(' ').append(cCnt);
-
-        System.out.println(sb.toString());
     }
 }
