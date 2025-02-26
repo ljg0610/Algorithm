@@ -1,22 +1,25 @@
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        char[][] words = new char[5][15];
+        List<String> words = new ArrayList<>();
+        int maxLen = 0;
+
         for (int i = 0; i < 5; i++) {
             String input = br.readLine();
-            for (int j = 0; j < input.length(); j++) {
-                words[i][j] = input.charAt(j);
-            }
+            words.add(input);
+            maxLen = Math.max(maxLen, input.length());
         }
 
         StringBuilder sb = new StringBuilder();
 
-        for (int i = 0; i < words[0].length; i++) {
-            for (int j = 0; j < 5; j++) {
-                if(words[j][i] != '\0') {
-                    sb.append(words[j][i]);
+        for (int i = 0; i < maxLen; i++) {
+            for (String word : words) {
+                if (i < word.length()) {
+                    sb.append(word.charAt(i));
                 }
             }
         }
