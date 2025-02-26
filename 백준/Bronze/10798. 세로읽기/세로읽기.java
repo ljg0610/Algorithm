@@ -3,27 +3,19 @@ import java.io.*;
 public class Main {
     public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        Character[][] words = new Character[5][15];
-        int maxLen = 0;
-
+        char[][] words = new char[5][15];
         for (int i = 0; i < 5; i++) {
             String input = br.readLine();
-            int inputLen = input.length();
-
-            if (maxLen < inputLen) {
-                maxLen = inputLen;
-            }
-
-            for (int j = 0; j < inputLen; j++) {
+            for (int j = 0; j < input.length(); j++) {
                 words[i][j] = input.charAt(j);
             }
         }
 
         StringBuilder sb = new StringBuilder();
 
-        for (int i = 0; i < maxLen; i++) {
+        for (int i = 0; i < words[0].length; i++) {
             for (int j = 0; j < 5; j++) {
-                if(words[j][i] != null) {
+                if(words[j][i] != '\0') {
                     sb.append(words[j][i]);
                 }
             }
