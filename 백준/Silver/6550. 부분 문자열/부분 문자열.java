@@ -1,5 +1,4 @@
 import java.io.*;
-import java.util.*;
 
 public class Main {
     public static void main (String[] args) throws IOException {
@@ -12,27 +11,20 @@ public class Main {
         
         while ((line = br.readLine()) != null && !line.isEmpty()) {
             String[] input = line.split(" ");  
-            if (input.length < 2) {
-                break;
-            }
-            String s = input[0];
-            String t = input[1];
-            int idx = 0;
+            char[] s = input[0].toCharArray();
+            char[] t = input[1].toCharArray();
 
-            for (int i = 0; i < t.length(); i++) {
-                if (t.charAt(i) == s.charAt(idx)) {
-                    idx++;
-                }
-                
-                if (idx == s.length()) {
-                    sb.append(YES).append('\n');
-                    break;
-                }
-            }
+            int sIdx = 0;
+            int tIdx = 0;
 
-            if (idx != s.length()) {
-                sb.append(NO).append('\n');
+            while(sIdx < s.length && tIdx < t.length) {
+                if (s[sIdx] == t[tIdx]) {
+                    sIdx++;
+                } 
+                tIdx++;
             }
+            
+            sb.append((sIdx == s.length) ? YES : NO).append('\n');
         }
 
         System.out.println(sb);
