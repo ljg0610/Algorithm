@@ -5,15 +5,16 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String input;
+        StringBuilder sb = new StringBuilder();
         
         while(!(input = br.readLine()).equals("end")) {
-            System.out.print("<" + input + "> ");
             if (isAcceptable(input)) {
-                System.out.println("is acceptable.");
+                sb.append("<").append(input).append("> is acceptable.\n");
             } else {
-                System.out.println("is not acceptable.");
+                sb.append("<").append(input).append("> is not acceptable.\n");
             }
         }
+        System.out.println(sb);
     }
 
     private static boolean isAcceptable (String input) {
