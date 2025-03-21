@@ -17,9 +17,12 @@ class Solution {
             int day = Integer.parseInt(input.substring(6));
 
             if (month < 1 || month > 12 || day < 1 || day > maxDays[month]) {
-                sb.append(String.format("#%d -1\n", i));
+                sb.append("#" + i).append(' ').append(-1).append('\n');
             } else {
-                sb.append(String.format("#%d %s/%02d/%02d\n", i, year, month, day));
+                sb.append('#').append(i).append(' ')
+                .append(year).append('/')
+                .append(String.format("%02d", month)).append('/')
+                .append(String.format("%02d", day)).append('\n');
             }
         }
 
