@@ -8,10 +8,8 @@ class Solution {
         
         StringBuilder sb = new StringBuilder();
 
-        sb.append(n).append(' ');
-
-        while (--n >= 0) {
-            sb.append(n).append(' ');
+        for (int i = n; i >= 0; i--) {
+            sb.append(i).append(' ');
         }
 
         System.out.println(sb);
