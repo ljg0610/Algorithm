@@ -1,35 +1,37 @@
-import java.util.*;
 import java.io.*;
-public class Solution {
+import java.util.*;
 
-	public static void main(String[] args) throws IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringBuilder sb = new StringBuilder();
-		
-		int T = Integer.parseInt(br.readLine());
-		
-		for(int testCase = 1; testCase <= T; testCase++) {
-			Integer.parseInt(br.readLine());
-			StringTokenizer st = new StringTokenizer(br.readLine());
-			
-			int[] scoreCnt = new int[101];
-			
-			for(int i = 0; i < 1000; i++) {
-				scoreCnt[Integer.parseInt(st.nextToken())]++;
-			}
-			
-			int max = Integer.MIN_VALUE;
-			int maxScore = 0;
-			
-			for (int i = 1; i < 101; i++) {
-				if(scoreCnt[i] > max || (scoreCnt[i] == max && i > maxScore)) {
-					max = scoreCnt[i];
-					maxScore = i;
-				}
-			}
-			
-			sb.append("#").append(testCase).append(" ").append(maxScore).append("\n");
-		}
-		System.out.println(sb.toString());
-	}
+class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st;
+        StringBuilder sb = new StringBuilder();
+
+        int t = Integer.parseInt(br.readLine());
+
+        for (int i = 0; i < t; i++) {
+            int n = Integer.parseInt(br.readLine());
+            
+            st = new StringTokenizer(br.readLine());
+            int[] students = new int[101];
+
+            for (int j = 0; j < 1000; j++) {
+                students[Integer.parseInt(st.nextToken())]++;
+            }
+
+            int max = Integer.MIN_VALUE; // 학생수
+            int idx = 0; //점수
+
+            for (int j = 0; j < 100; j++) {
+                if (max <= students[j] && idx < j) {
+                    max = students[j];
+                    idx = j;
+                }
+            }
+
+            sb.append("#" + n).append(' ').append(idx).append('\n');
+        }
+
+        System.out.println(sb);
+    }
 }
