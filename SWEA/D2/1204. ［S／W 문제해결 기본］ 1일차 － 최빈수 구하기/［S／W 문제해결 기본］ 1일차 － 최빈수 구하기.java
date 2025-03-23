@@ -19,17 +19,17 @@ class Solution {
                 students[Integer.parseInt(st.nextToken())]++;
             }
 
-            int max = Integer.MIN_VALUE; // 학생수
-            int idx = 0; //점수
+            int maxScore = 0;
+            int maxCount = 0;
 
-            for (int j = 0; j < 100; j++) {
-                if (max <= students[j] && idx < j) {
-                    max = students[j];
-                    idx = j;
+            for (int j = 100; j >= 0; j--) {
+                if (maxCount < students[j]) {
+                    maxCount = students[j];
+                    maxScore = j;
                 }
             }
 
-            sb.append("#" + n).append(' ').append(idx).append('\n');
+            sb.append("#" + n).append(' ').append(maxScore).append('\n');
         }
 
         System.out.println(sb);
