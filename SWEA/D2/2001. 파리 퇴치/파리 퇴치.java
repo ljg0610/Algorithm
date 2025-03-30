@@ -1,47 +1,49 @@
 import java.io.*;
 import java.util.*;
-
+ 
 class Solution {
     public static void main(String[] args) throws IOException {
+        // 누적합은 추가 배열 생성, 수식 연산 등 비용 있어 입력 크기가 작은 이 문제에서는 완전탐색이 효율이 더 좋다.
+        
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
-
+ 
         int test_case = Integer.parseInt(br.readLine());
+ 
         StringBuilder sb = new StringBuilder();
-
+ 
         for (int t = 1; t <= test_case; t++) {
             st = new StringTokenizer(br.readLine());
+ 
             int n = Integer.parseInt(st.nextToken());
             int m = Integer.parseInt(st.nextToken());
-
-            int[][] arr = new int[n + 1][n + 1]; // 입력 배열
-            int[][] sum = new int[n + 1][n + 1]; // 누적합 배열
-
-            for (int i = 1; i <= n; i++) {
+ 
+            int[][] arr = new int[n][n];
+ 
+            for (int i = 0; i < n; i++) {
                 st = new StringTokenizer(br.readLine());
-                for (int j = 1; j <= n; j++) {
+                for (int j = 0; j < n; j++) {
                     arr[i][j] = Integer.parseInt(st.nextToken());
-
-                    // 누적합 계산
-                    sum[i][j] = arr[i][j] + sum[i - 1][j] + sum[i][j - 1] - sum[i - 1][j - 1];
                 }
             }
-
+ 
             int max = 0;
-
-            for (int i = m; i <= n; i++) {
-                for (int j = m; j <= n; j++) {
-                    int total = sum[i][j]
-                              - sum[i - m][j]
-                              - sum[i][j - m]
-                              + sum[i - m][j - m];
-                    max = Math.max(max, total);
+ 
+            for (int i = 0; i <= n - m; i++) {
+                for (int j = 0; j <= n - m; j++) {
+                    int sum = 0;
+                    for (int x = i; x < i + m; x++) {
+                        for (int y = j; y < j + m; y++) {
+                            sum += arr[x][y];
+                        }
+                    }
+                    max = Math.max(max, sum);
                 }
             }
-
-            sb.append("#").append(t).append(" ").append(max).append("\n");
+ 
+            sb.append("#" + t).append(' ').append(max).append('\n');
         }
-
-        System.out.print(sb);
+ 
+        System.out.println(sb);
     }
 }
