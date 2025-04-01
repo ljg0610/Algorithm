@@ -11,9 +11,8 @@ public class Main {
 
         for (int i = 0; i < input.length; i++) {
             if (input[i] == '<') {
-                while(!stack.isEmpty()) {
-                    sb.append(stack.pop());
-                }
+                flushStack(stack, sb);
+
                 sb.append(input[i]);
                 while (true) {
                     if (input[++i] == '>') {
@@ -23,19 +22,21 @@ public class Main {
                     sb.append(input[i]);
                 }
             } else if (input[i] == ' ') {
-                while(!stack.isEmpty()) {
-                    sb.append(stack.pop());
-                }
+                flushStack(stack, sb);
                 sb.append(' ');
             } else {
                 stack.push(input[i]);
             }
         }
 
+        flushStack(stack, sb);
+
+        System.out.println(sb);
+    }
+
+    private static void flushStack(Deque<Character> stack, StringBuilder sb) {
         while(!stack.isEmpty()) {
             sb.append(stack.pop());
         }
-
-        System.out.println(sb);
     }
 }
