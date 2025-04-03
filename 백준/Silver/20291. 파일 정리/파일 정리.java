@@ -17,8 +17,8 @@ public class Main {
 
         StringBuilder sb = new StringBuilder();
 
-        for (String key : files.keySet()) {
-            sb.append(key).append(' ').append(files.get(key)).append('\n');
+        for (Map.Entry<String, Integer> entry : files.entrySet()) {
+            sb.append(entry.getKey()).append(' ').append(entry.getValue()).append('\n');
         }
 
         System.out.println(sb);
