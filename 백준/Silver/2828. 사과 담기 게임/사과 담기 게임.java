@@ -10,27 +10,23 @@ public class Main {
         int m = Integer.parseInt(st.nextToken());
         int j = Integer.parseInt(br.readLine());
 
-
         int posLeft = 1;
         int posRight = m;
-
         int cnt = 0;
 
         for (int i = 0; i < j; i++) {
-            int input = Integer.parseInt(br.readLine());
+            int drop = Integer.parseInt(br.readLine());
 
-            if (input < posLeft) {
-                while (input != posLeft) {
-                    posLeft--;
-                    posRight--;
-                    cnt++;
-                }
-            } else if (input > posRight){
-                while (input != posRight) {
-                    posRight++;
-                    posLeft++;
-                    cnt++;
-                }
+            if (drop < posLeft) {
+                int move = posLeft - drop;
+                posLeft -= move;
+                posRight -= move;
+                cnt += move;
+            } else if (drop > posRight){
+                int move = drop - posRight;
+                posLeft += move;
+                posRight += move;
+                cnt += move;
             }
         }
 
