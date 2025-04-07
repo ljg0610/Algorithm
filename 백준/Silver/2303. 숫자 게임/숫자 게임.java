@@ -22,13 +22,9 @@ public class Main {
 
             int max = 0;
             for (int a = 0; a < GIVEN; a++) {
-                for (int b = 0; b < GIVEN; b++) {
-                    if (b == a) continue;
-                    for (int c = 0; c < GIVEN; c++) {
-                        if (c == b || c == a) continue;
-
+                for (int b = a + 1; b < GIVEN; b++) {
+                    for (int c = b + 1; c < GIVEN; c++) {
                         int sum = cards[a] + cards[b] + cards[c];
-
                         max = Math.max(max, sum % 10);
                     }
                 }
