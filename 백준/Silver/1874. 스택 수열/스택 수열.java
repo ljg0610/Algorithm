@@ -17,7 +17,7 @@ public class Main {
         }
 
         while (true) {
-            if (!stack.isEmpty() && stack != null && stack.peek() == arr[idx]) {
+            if (!stack.isEmpty() && stack.peek() == arr[idx]) {
                 idx++;
                 stack.pop();
                 sb.append('-').append('\n');
