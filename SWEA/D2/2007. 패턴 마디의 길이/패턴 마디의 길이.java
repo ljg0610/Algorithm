@@ -10,7 +10,7 @@ class Solution {
         for (int tc = 1; tc <= t; tc++) {
             String input = br.readLine();
 
-            for (int i = 1; i < input.length(); i++) {
+            for (int i = 1; i < input.length() / 2; i++) {
                 String madi = input.substring(0, i);
                 String word = input.substring(i, i+i);
                 if (madi.equals(word)) {
