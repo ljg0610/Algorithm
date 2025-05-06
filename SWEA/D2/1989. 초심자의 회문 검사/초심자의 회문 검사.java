@@ -9,13 +9,11 @@ class Solution {
 
         for (int tc = 1; tc <= t; tc++) {
             String input = br.readLine();
-            StringBuilder inputSb = new StringBuilder();
-            inputSb.append(input);
-            
+            StringBuilder inputSb = new StringBuilder(input).reverse();
 
-            int result = input.equals(inputSb.reverse().toString()) ? 1 : 0;
+            int result = input.equals(inputSb.toString()) ? 1 : 0;
 
-            sb.append('#').append(tc).append(' ').append(result).append('\n');
+            sb.append("#" + tc).append(' ').append(result).append('\n');
         }
 
         System.out.println(sb);
