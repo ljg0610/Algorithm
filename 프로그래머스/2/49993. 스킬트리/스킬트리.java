@@ -4,26 +4,30 @@ class Solution {
     public int solution(String skill, String[] skill_trees) {
         int answer = 0; 
         
+        Set<Character> skillSet = new HashSet<>();
+        for (char c : skill.toCharArray()) {
+            skillSet.add(c);
+        }
+        
         for (String tree : skill_trees) {
             int idx = 0;
             boolean flag = true;
             
-            for (int i = 0; i < tree.length(); i++) {
-                char c = tree.charAt(i);
+            for (char c : tree.toCharArray()) {
+                if (!skillSet.contains(c)) continue;
                 
-                if (skill.indexOf(c) != -1) {
-                    if (c != skill.charAt(idx)) {
-                        flag = false;
-                        break;
-                    } else {
-                        idx++;
-                    }
+                if (c != skill.charAt(idx)) {
+                    flag = false;
+                    break;
                 }
+                idx++;
             }
-            if (flag) {
+            
+            if(flag) {
                 answer++;
             }
         }
+        
         return answer;
     }
 }
