@@ -6,16 +6,11 @@ class Solution {
         
         for (int i = 0; i < str.length; i++) {
             int num = Integer.parseInt(str[i]);
-            if (num > max) {
-                max = num;
-            } 
-            if (num < min) {
-                min = num;
-            }
+            max = Math.max(max, num);
+            min = Math.min(min, num);
         }
         
-        StringBuilder sb = new StringBuilder();
-        sb.append(min).append(' ').append(max);
-        return sb.toString();
+        String answer = min + " " + max;
+        return answer;
     }
 }
