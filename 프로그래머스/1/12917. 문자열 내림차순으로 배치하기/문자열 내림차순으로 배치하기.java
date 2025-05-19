@@ -4,11 +4,7 @@ class Solution {
         char[] ch = s.toCharArray();
         Arrays.sort(ch);
         
-        StringBuilder sb = new StringBuilder();
-        for (char c : ch) {
-            sb.append(c);
-        }
-        
+        StringBuilder sb = new StringBuilder(new String(ch));
         String answer = sb.reverse().toString();
         return answer;
     }
