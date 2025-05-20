@@ -10,6 +10,8 @@ class Solution {
             if (budget - depart >= 0) {
                 budget -= depart;
                 cnt++;
+            } else {
+                break;
             }
         }
         
