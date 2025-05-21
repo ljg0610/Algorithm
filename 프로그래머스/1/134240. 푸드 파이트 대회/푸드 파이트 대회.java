@@ -9,15 +9,8 @@ class Solution {
             }
         }
         
-        String s = sb.toString();
-        String reversed = sb.reverse().toString();
+        String nSb = new StringBuilder(sb).reverse().toString();
         
-        sb.setLength(0);
-        
-        sb.append(s).append(0).append(reversed);
-        
-        
-        
-        return sb.toString();
+        return sb.append(0).append(nSb).toString();
     }
 }
