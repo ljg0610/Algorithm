@@ -1,27 +1,14 @@
 class Solution {
     public String solution(String s, int n) {
-        char[] alphabet = new char[] {'a','b','c','d','e','f','g','h','i','j','k','l',
-                                     'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
-                                     'w', 'x', 'y', 'z'};
         StringBuilder sb = new StringBuilder();
         
-        for (int i = 0; i < s.length(); i++) {
-            char c = s.charAt(i);
-            
-            if (c == ' ') {
-                sb.append(c);
+        for (char c : s.toCharArray()) {
+            if (Character.isUpperCase(c)) {
+                sb.append((char)((c - 'A' + n) % 26 + 'A'));
+            } else if (Character.isLowerCase(c)) {
+                sb.append((char)((c - 'a' + n) % 26 + 'a'));
             } else {
-                for (int j = 0; j < alphabet.length; j++) {
-                    if (alphabet[j] == c) {
-                        char ch = alphabet[(j + n) % 26];
-                        sb.append(ch);
-                        break;
-                    } else if (Character.toUpperCase(alphabet[j]) == c) {
-                        char ch = alphabet[(j + n) % 26];
-                        sb.append(Character.toUpperCase(ch));
-                        break;
-                    }
-                }
+                sb.append(c);
             }
         }
         
