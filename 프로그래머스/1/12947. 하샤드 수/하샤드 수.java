@@ -1,16 +1,13 @@
 class Solution {
     public boolean solution(int x) {
-        String s = Integer.toString(x);
+        int sum = 0;
+        int n = x;
         
-        int num = 0;
-        for (char c : s.toCharArray()) {
-            num += c - '0';
+        while (n > 0) {
+            sum += n % 10;
+            n /= 10;
         }
         
-        if (x % num == 0) {
-            return true;
-        }
-        
-        return false;
+        return x % sum == 0;
     }
 }
