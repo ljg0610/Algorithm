@@ -1,27 +1,27 @@
 import java.util.*;
+
 class Solution {
     public int[] solution(int[] arr, int divisor) {
-        int[] answer = {};
-        List<Integer> list = new ArrayList<>();
+        int cnt = 0;
         
-        for (int num : arr) {
-            if (num % divisor == 0) {
-                list.add(num);
+        for (int x : arr) {
+            if (x % divisor == 0) {
+                cnt++;
             }
         }
         
-        if (list.size() == 0) {
-            answer = new int[1];
-            answer[0] = -1;
-            return answer;
+        if (cnt == 0) return new int[]{-1};
+        
+        int[] answer = new int[cnt];
+        int idx = 0;
+        for (int x : arr) {
+            if (x % divisor == 0) {
+                answer[idx++] = x;
+            }
         }
         
-        answer = new int[list.size()];
-        Collections.sort(list);
+        Arrays.sort(answer);
         
-        for (int i = 0; i < list.size(); i++) {
-            answer[i] = list.get(i);
-        }
         return answer;
     }
 }
