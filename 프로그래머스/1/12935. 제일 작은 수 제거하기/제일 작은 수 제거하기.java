@@ -1,21 +1,20 @@
-import java.util.*;
-
 class Solution {
     public int[] solution(int[] arr) {
-        if (arr.length == 1) return new int[] {-1};
+        int n = arr.length;
+        if (n == 1) return new int[] {-1};
         
-        int[] nums = arr.clone();
-        Arrays.sort(nums);
-        int num = nums[0];
-        
-        int[] answer = new int[arr.length - 1];
-        int idx = 0;
-        
-        for (int n : arr) {
-            if (n == num) {
-                continue;
+        int minIdx = 0;
+        for (int i = 1; i < n; i++) {
+            if (arr[i] < arr[minIdx]) {
+                minIdx = i;
             }
-            answer[idx++] = n;
+        }
+        
+        int[] answer = new int[n - 1];
+        int j = 0;
+        for (int i = 0; i < n; i++) {
+            if (i == minIdx) continue;
+            answer[j++] = arr[i];
         }
         
         return answer;
