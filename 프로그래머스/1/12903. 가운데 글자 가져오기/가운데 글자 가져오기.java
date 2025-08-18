@@ -1,13 +1,13 @@
 class Solution {
     public String solution(String s) {
-        int idx = 0; 
+        int n = s.length();
+        int mid = n / 2;
         String answer = "";
-        if (s.length() % 2 == 1) {
-            idx = s.length() / 2;
-            answer = s.substring(idx, idx + 1);
+        
+        if (n % 2 == 0) {
+            answer = s.substring(mid - 1, mid + 1);
         } else {
-            idx = s.length() / 2 - 1;
-            answer = s.substring(idx, idx + 2);
+            answer = s.substring(mid, mid + 1);
         }
         
         return answer;
