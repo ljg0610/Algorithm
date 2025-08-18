@@ -1,13 +1,16 @@
 class Solution {
     public String solution(int n) {
+        int num = n / 2;
+        boolean chk = n % 2 == 0;
+        String answer = "수박";
         StringBuilder sb = new StringBuilder();
-        for (int i = 1; i <= n; i++) {
-            if (i % 2 == 1) {
-                sb.append('수');
-            } else {
-                sb.append('박');
-            }
+        
+        sb.append(answer.repeat(num));
+        
+        if(!chk) {
+            sb.append('수');
         }
+        
         return sb.toString();
     }
 }
