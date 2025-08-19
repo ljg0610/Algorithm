@@ -1,15 +1,19 @@
 class Solution {
     public long solution(int price, int money, int count) {
-        long result = 0;
+        long answer = 0;
         
-        for (int i = 1; i <= count; i++) {
-            result += price * i;
+        long num = price;
+        int cnt = 2;
+        
+        while (cnt < count + 1) {
+            num += (long) (price * cnt++);
         }
         
-        if (result <= money) {
-            return 0;
-        } 
         
-        return result - money;
+        if (num <= money) {return 0;}
+        
+        answer = Math.abs(num - money);
+
+        return answer;
     }
 }
