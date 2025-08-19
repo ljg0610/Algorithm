@@ -1,15 +1,16 @@
 class Solution {
     public int solution(String t, String p) {
-        int len = t.length() - p.length();
-        int cnt = 0;
+        int tLen = t.length();
+        int pLen = p.length();
+        int answer = 0;
         
-        for (int i = 0; i <= len; i++) {
-            String result = t.substring(i, i + p.length());
-            if (Long.parseLong(result) <= Long.parseLong(p)) {
-                cnt++;
-            }
+        for (int i = 0; i <= tLen - pLen; i++) {
+            long result = Long.parseLong(t.substring(i, i + pLen));
+            long numP = Long.parseLong(p);
+            
+            if (result <= numP) answer++;
         }
         
-        return cnt;
+        return answer;
     }
 }
