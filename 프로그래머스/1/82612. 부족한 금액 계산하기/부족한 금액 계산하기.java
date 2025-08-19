@@ -1,18 +1,9 @@
 class Solution {
     public long solution(int price, int money, int count) {
-        long answer = 0;
-        
-        long num = price;
-        int cnt = 2;
-        
-        while (cnt < count + 1) {
-            num += (long) (price * cnt++);
-        }
-        
-        
-        if (num <= money) {return 0;}
-        
-        answer = Math.abs(num - money);
+        long p = price;
+        long c = count;
+        long total = p * c * (c + 1) / 2;
+        long answer = total <= money ? 0 : total - money;
 
         return answer;
     }
