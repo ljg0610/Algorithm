@@ -1,19 +1,16 @@
 class Solution {
     public String solution(String s) {
-        String[] str = s.split(" ", -1);
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder(s.length());
+        int idx = 0;
         
-        for (int i = 0; i < str.length; i++) {
-            char[] ch = str[i].toCharArray();
-            for (int j = 0; j < ch.length; j++) {
-                if (j % 2 == 0) {
-                    sb.append(Character.toUpperCase(ch[j]));
-                } else {
-                    sb.append(Character.toLowerCase(ch[j]));
-                }
-            }
-            if (i != str.length - 1) {
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            
+            if (c == ' ') {
                 sb.append(' ');
+                idx = 0;
+            } else {
+                sb.append((idx++ % 2 == 0) ? Character.toUpperCase(c) : Character.toLowerCase(c));
             }
         }
         
