@@ -5,13 +5,10 @@ class Solution {
         Arrays.sort(d);
         int answer = 0;
         
-        for (int i = 0; i < d.length; i++) {
-            if (budget - d[i] >= 0) {
-                budget -= d[i];
-                answer++;
-            } else {
-                break;
-            }
+        for (int cost : d) {
+            if (budget - cost < 0) break;
+            budget -= cost;
+            answer++;
         }
         
         return answer;
