@@ -2,19 +2,18 @@ import java.util.*;
 
 class Solution {
     public int solution(int[] d, int budget) {
-        
         Arrays.sort(d);
-        int cnt = 0;
+        int answer = 0;
         
-        for (int depart : d) {
-            if (budget - depart >= 0) {
-                budget -= depart;
-                cnt++;
+        for (int i = 0; i < d.length; i++) {
+            if (budget - d[i] >= 0) {
+                budget -= d[i];
+                answer++;
             } else {
                 break;
             }
         }
         
-        return cnt;
+        return answer;
     }
 }
