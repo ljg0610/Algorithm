@@ -1,22 +1,19 @@
 class Solution {
     public String solution(String s) {
-        char[] ch = s.toCharArray();
-        
+        String[] str = s.split(" ", -1);
         StringBuilder sb = new StringBuilder();
         
-        int idx = 0;
-        for (char c : ch) {
-            if (c == ' ') {
-                sb.append(c);
-                idx = 0;
-            } else {
-                if (idx == 0 || idx % 2 == 0) {
-                    sb.append(Character.toUpperCase(c));
+        for (int i = 0; i < str.length; i++) {
+            char[] ch = str[i].toCharArray();
+            for (int j = 0; j < ch.length; j++) {
+                if (j % 2 == 0) {
+                    sb.append(Character.toUpperCase(ch[j]));
                 } else {
-                    sb.append(Character.toLowerCase(c));
+                    sb.append(Character.toLowerCase(ch[j]));
                 }
-                
-                idx++;
+            }
+            if (i != str.length - 1) {
+                sb.append(' ');
             }
         }
         
