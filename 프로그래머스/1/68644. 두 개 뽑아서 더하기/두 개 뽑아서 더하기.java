@@ -1,18 +1,23 @@
-import java.util.*;
-
 class Solution {
     public int[] solution(int[] numbers) {
-        Set<Integer> set = new TreeSet<>();
-        for (int i = 0; i < numbers.length - 1; i++) {
-            for (int j = i + 1; j < numbers.length; j++) {
-                set.add(numbers[i] + numbers[j]);
+        boolean[] seen = new boolean[201];
+        int n = numbers.length;
+        
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = i + 1; j < n; j++) {
+                seen[numbers[i] + numbers[j]] = true;
             }
         }
         
-        int[] answer = new int[set.size()];
+        int cnt = 0;
+        for (boolean b : seen) {
+            if (b) cnt++;
+        }
+        
+        int[] answer = new int[cnt];
         int idx = 0;
-        for (int num : set) {
-            answer[idx++] = num;
+        for (int i = 0; i < seen.length; i++) {
+            if (seen[i]) answer[idx++] = i;
         }
         
         return answer;
