@@ -1,11 +1,9 @@
 class Solution {
     public String solution(String s, int n) {
-        n %= 26;
-        char[] ch = s.toCharArray();
-        
-        StringBuilder sb = new StringBuilder(s.length());
-        
-        for (char c : ch) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            
             if (c == ' ') {
                 sb.append(' ');
                 continue;
