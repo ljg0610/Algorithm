@@ -1,13 +1,17 @@
 class Solution {
     public int solution(int[][] sizes) {
-        int row = 0;
-        int col = 0;
+        int maxW = 0;
+        int maxH = 0;
         
-        for (int[] size : sizes) {
-            row = Math.max(row, Math.min(size[0], size[1]));
-            col = Math.max(col, Math.max(size[0], size[1]));
+        for (int[] s : sizes) {
+            int big = Math.max(s[0], s[1]);
+            int small = Math.min(s[0], s[1]);
+            
+            if (big > maxW) maxW = big;
+            
+            if (small > maxH) maxH = small;
         }
         
-        return row * col;
+        return maxW * maxH;
     }
 }
