@@ -3,9 +3,11 @@ class Solution {
         String[] answer = new String[n];
         for (int i = 0; i < n; i++) {
             int row = arr1[i] | arr2[i];
-            String bin = String.format("%" + n + "s", 
-                                       Integer.toBinaryString(row)).replace(' ', '0');
-            answer[i] = bin.replace('1', '#').replace('0', ' ');
+            StringBuilder sb = new StringBuilder();
+            for (int j = n - 1; j >= 0; j--) {
+                sb.append(((row >> j) & 1) == 1 ? '#' : ' ');
+            }
+            answer[i] = sb.toString();
         }
         return answer;
     }
