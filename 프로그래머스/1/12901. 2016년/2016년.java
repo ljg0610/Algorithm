@@ -7,8 +7,7 @@ class Solution {
             days += month[i];
         }
         
-        days += b - 1;
-        days %= 7;
+        days = (days + b - 1) % 7;
         
         String answer = day[days];
         return answer;
