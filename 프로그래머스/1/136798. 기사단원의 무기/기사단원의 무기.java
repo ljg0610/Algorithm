@@ -1,15 +1,17 @@
 class Solution {
     public int solution(int number, int limit, int power) {
+        int[] cnt = new int[number + 1];
         int answer = 0;
         for (int i = 1; i <= number; i++) {
-            int cnt = 0;
-            for (int d = 1; d * d <= i; d++) {
-                if (i % d == 0) {
-                    cnt += (d * d == i) ? 1 : 2;
-                }
+            for (int m = i; m <= number; m += i) {
+                cnt[m]++;
             }
-            answer += (cnt > limit) ? power : cnt;
         }
+        
+        for (int i = 1; i <= number; i++) {
+            answer += (cnt[i] > limit) ? power : cnt[i];
+        }
+        
         return answer;
     }
 }
