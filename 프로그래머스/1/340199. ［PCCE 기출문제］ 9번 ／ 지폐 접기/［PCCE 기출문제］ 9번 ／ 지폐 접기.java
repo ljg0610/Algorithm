@@ -1,21 +1,20 @@
 class Solution {
     public int solution(int[] wallet, int[] bill) {
         int answer = 0;
-        int maxWallet = Math.max(wallet[0], wallet[1]);
-        int minWallet = Math.min(wallet[0], wallet[1]);
-        int maxBill = Math.max(bill[0], bill[1]);
-        int minBill = Math.min(bill[0], bill[1]);
+        int maxW = Math.max(wallet[0], wallet[1]);
+        int minW = Math.min(wallet[0], wallet[1]);
+        int a = bill[0];
+        int b = bill[1];
         
-        while(maxWallet < maxBill || minWallet < minBill) {
-            if (bill[0] > bill[1]) {
-                int tmp = bill[1];
-                bill[1] = bill[0];
-                bill[0] = tmp;
-            }
+        while (true) {
+            int bigB = Math.max(a, b);
+            int smallB = Math.min(a, b);
             
-            bill[1] /= 2;
-            minBill = Math.min(bill[0], bill[1]);
-            maxBill = Math.max(bill[0], bill[1]);
+            if (bigB <= maxW && smallB <= minW) break;
+            
+            if (a >= b) a /= 2;
+            else b /= 2;
+            
             answer++;
         }
         return answer;
